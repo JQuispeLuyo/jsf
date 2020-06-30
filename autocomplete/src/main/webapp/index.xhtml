@@ -8,5 +8,16 @@
     </h:head>
     <h:body>
         <h1>Hola :D</h1>
+        <h:form id="UbigeoListForm">
+            <p:panel header="Autocomplete">
+                <p:outputLabel value="Ubigeo" for="ubigeo" />
+                <p:autoComplete id="ubigeo" 
+                                value="#{ubigeoController.ubigeo}" 
+                                var="ubigeo_var" 
+                                itemValue="#{ubigeo_var}" 
+                                itemLabel="#{ubigeo_var.NOMDIST}"
+                                completeMethod="#{ubigeoController.autocomplete}" />
+            </p:panel>
+        </h:form>
     </h:body>
 </html>
