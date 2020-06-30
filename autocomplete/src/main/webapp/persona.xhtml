@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="PersonaForm">
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel value="Nombre" for="nomper" />
+                <p:inputText id="nomper" 
+                             value="#{personaController.persona.NOMPER}" 
+                             required="true">
+                </p:inputText>
+                
+                <p:outputLabel value="Apellido" for="apeper" />
+                <p:inputText id="apeper" 
+                             value="#{personaController.persona.APEPER}" 
+                             required="true">
+                </p:inputText>
+
+                <p:outputLabel value="Simple:" for="acSimple" />
+                <p:autoComplete id="acSimple" 
+                                value="#{personaController.persona.ubigeo}" 
+                                var="ubigeo_var" itemValue="#{ubigeo_var}" 
+                                forceSelection="true"
+                                itemLabel="#{ubigeo_var.NOMDIST}"
+                                converter="CV_Ubigeo"
+                                completeMethod="#{ubigeoController.autocomplete}" />
+            </h:panelGrid>
+            <p:commandButton id="button_create" 
+                             actionListener="#{personaController.create}" 
+                             value="Crear"/>
+        </h:form>
+
+    </h:body>
+</html>
