@@ -40,5 +40,10 @@ public class Ubigeo implements Serializable {
     public void setNOMDIST(String NOMDIST) {
         this.NOMDIST = NOMDIST;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Ubigeo{" + "CODUBI=" + CODUBI + ", NOMDEP=" + NOMDEP + ", NOMPROV=" + NOMPROV + ", NOMDIST=" + NOMDIST + '}';
+    }
+
 }
