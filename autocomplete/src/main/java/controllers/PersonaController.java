@@ -4,9 +4,9 @@ import dao.PersonaDao;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
-import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import models.Persona;
 
@@ -29,7 +29,17 @@ public class PersonaController implements Serializable{
         System.out.println(persona);
         this.personaDao.create(persona);
         items = null;
+        growlMessage("El usuario "+ persona.getNOMPER() + " fue creado exitosamente");
+        persona = new Persona();
     }
+    
+    
+    //metodo para llamar al growl
+    private void growlMessage (String message){
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Nuevo registro", message) );
+    }
+    
 
     public List<Persona> getItems() throws SQLException {
         if (items == null) { //Condicional para lista cada vez que se realize una accion de CRUD
